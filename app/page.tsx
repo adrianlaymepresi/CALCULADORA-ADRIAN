@@ -20,10 +20,17 @@ export default function Home() {
   };
 
   const handleEquals = () => {
-    if (prev !== null && op) {
-      const res = calculate(prev, parseFloat(display), op);
-      setHistory(addHistoryEntry(history, prev, parseFloat(display), op, res));
-      setDisplay(String(res));
+    // Condición para evitar evaluación prematura
+    if (!op || prev === null) return;
+
+    try {
+      const result = calculate(prev, parseFloat(display), op);
+      setHistory(addHistoryEntry(history, prev, parseFloat(display), op, result));
+      setDisplay(String(result));
+      setPrev(null);
+      setOp(null);
+    } catch (error) {
+      setDisplay('Error');
       setPrev(null);
       setOp(null);
     }

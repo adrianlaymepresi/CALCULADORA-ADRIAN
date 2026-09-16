@@ -38,20 +38,24 @@ export function appendDecimal(current: string): string {
 }
 
 export function calculate(a: number, b: number, op: Operation): number {
+  let result: number;
   switch (op) {
-    case '+': return a + b;
-    case '-': return a - b;
-    case '*': return a * b;
+    case '+': result = a + b; break;
+    case '-': result = a - b; break;
+    case '*': result = a * b; break;
     case '/':
       if (b === 0) throw new Error('ERR_DIV_ZERO');
-      return a / b;
-    case '%': return (a * b) / 100;
-    case '^': return Math.pow(a, b);
-    case 'square': return Math.pow(b, 2);
-    case 'negate': return -b;
-    case 'sqrt': return Math.sqrt(b);
-    default: return b;
+      result = a / b;
+      break;
+    case '%': result = (a * b) / 100; break;
+    case '^': result = Math.pow(a, b); break;
+    case 'square': result = Math.pow(b, 2); break;
+    case 'negate': result = -b; break;
+    case 'sqrt': result = Math.sqrt(b); break;
+    default: result = b;
   }
+  // Corrección de precisión a 8 decimales:
+  return Math.round((result + Number.EPSILON) * 1e8) / 1e8;
 }
 
 export function removeLastChar(display: string): string {
