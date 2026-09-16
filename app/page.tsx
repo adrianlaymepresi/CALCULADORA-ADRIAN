@@ -37,7 +37,7 @@ export default function Home() {
     <main className="max-w-md mx-auto p-6 space-y-4 bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl w-full">
       {/* LÍNEA CRÍTICA DE CONFLICTO: Título */}
       <header className="border-b border-zinc-800 pb-2">
-        <h1 className="text-2xl font-bold text-amber-400">CALCULADORA ORGANIZACION OFICIAL</h1>
+        <h1 className="text-2xl font-bold text-amber-400">CALCULADORA COMUNIDAD PRESI IGNACIO ADRIAN LAYME DELGADO</h1>
       </header>
 
       {/* Pantalla */}
